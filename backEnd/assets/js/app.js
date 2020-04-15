@@ -1,3 +1,38 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyBs6ySu3ut5-paTRqRuwfHoEGS9yYoNS_w",
+  authDomain: "dessert-7fce1.firebaseapp.com",
+  databaseURL: "https://dessert-7fce1.firebaseio.com",
+  projectId: "dessert-7fce1",
+  storageBucket: "dessert-7fce1.appspot.com",
+  messagingSenderId: "364085455444",
+  appId: "1:364085455444:web:5cf4797debb28e1f699bc1",
+  measurementId: "G-WWT7FMWXFJ"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+var db = firebase.firestore();
+
+(function statusUser() {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+
+      if (!emailVerified) {
+        window.location.href = "login.html";
+      }
+    } else {
+      window.location.href = "login.html";
+    }
+  });
+})();
+
 let head = `<meta charset="utf-8" />
 <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
@@ -14,7 +49,9 @@ let head = `<meta charset="utf-8" />
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link href="assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
 <!-- CSS Just for demo purpose, don't include it in your project -->
-<link href="assets/demo/demo.css" rel="stylesheet" />`;
+<link href="assets/demo/demo.css" rel="stylesheet" />
+<link href="assets/css/style.css" rel="stylesheet" />
+`;
 
 document.head.innerHTML = head;
 
@@ -80,10 +117,10 @@ document.getElementsByClassName('navbar')[0].innerHTML = `<div class="container-
 <div class="collapse navbar-collapse justify-content-end" id="navigation">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a onclick="logOut()" class="nav-link" href="#">
         <i class="now-ui-icons users_single-02"></i>
         <p>
-          <span class="d-lg-none d-md-block">Account</span>
+          <span class="d-lg-none d-md-block">Log Out</span>
         </p>
       </a>
     </li>
@@ -118,20 +155,12 @@ document.getElementById("footer").innerHTML = `<div class=" container-fluid ">
 </div>
 </div>`;
 
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyBs6ySu3ut5-paTRqRuwfHoEGS9yYoNS_w",
-  authDomain: "dessert-7fce1.firebaseapp.com",
-  databaseURL: "https://dessert-7fce1.firebaseio.com",
-  projectId: "dessert-7fce1",
-  storageBucket: "dessert-7fce1.appspot.com",
-  messagingSenderId: "364085455444",
-  appId: "1:364085455444:web:5cf4797debb28e1f699bc1",
-  measurementId: "G-WWT7FMWXFJ"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
-var db = firebase.firestore();
-//var storage = firebase.storage();
+
+function logOut() {
+  firebase.auth().signOut().then(function () {
+    // Sign-out successful.
+  }).catch(function (error) {
+    // An error happened.
+  });
+}

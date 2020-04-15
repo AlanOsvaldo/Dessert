@@ -9,14 +9,13 @@ $(document).ready(function () {
             let i = 1;
             tabla.innerHTML = '';
             querySnapshot.forEach((doc) => {
-                console.log(`${doc.id} => ${doc.data()}`);
                 tabla.innerHTML += `<tr>
                     <th scope="row">${i}</th>
                     <td>${doc.data().name}</td>
                     <td>${doc.data().comment}</td>
-                    <td class="text-right">${doc.data().date}</td>
-                    <td><a onclick="readComment('${doc.id}')" href="#" style="color: #2CA8FF"><i class="material-icons">visibility</i></a></td>
-                    <td><a onclick="deleteComment('${doc.id}')" href="#" style="color: #FF3636"><i class="material-icons">delete</i></a></td>
+                    <td>${doc.data().date}</td>
+                    <td class="text-center"><a onclick="readComment('${doc.data().name}','${doc.data().comment}','${doc.data().email}','${doc.data().phone}','${doc.data().date}')" href="#" style="color: #2CA8FF"><i class="material-icons">visibility</i></a></td>
+                    <td class="text-center"><a onclick="deleteComment('${doc.id}')" href="#" style="color: #FF3636"><i class="material-icons">delete</i></a></td>
                     </tr>`;
                 i++;
             });
@@ -26,34 +25,13 @@ $(document).ready(function () {
 
 });
 
-function readComment(id) {
-    db.collection('dessert').doc(id).get().then((doc) => {
-        console.log(doc);
-        if (doc.empty == false) {
-            let tabla = document.getElementById('table');
-            let i = 1;
-            tabla.innerHTML = '';
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                tabla.innerHTML += `<tr>
-                    <th scope="row">${i}</th>
-                    <td>${doc.data().name}</td>
-                    <td>${doc.data().description}</td>
-                    <td class="text-right">${doc.data().price}</td>
-                    <td hidden><a href="#"><i class="material-icons">visibility</i></a></td>
-                    <td><a onclick="updateComment('${doc.id}','${doc.data().name}','${doc.data().price}','${doc.data().description}')" href="#" style="color: #2CA8FF"><i class="material-icons">cached</i></a></td>
-                    <td><a onclick="deleteComment('${doc.id}')" href="#" style="color: #FF3636"><i class="material-icons">delete</i></a></td>
-                    </tr>`;
-                i++;
-            });
-        } else {
-            console.log("No such document!");
-            sAlert("ERROR", "Don't exist this product", "error");
-        }
-    }).catch((error) => {
-        sAlert("ERROR", "Error in the query", "error");
-        console.log("Error getting document:", error);
-    });
+function readComment(name, comment, email, phone, date) {
+    document.getElementById('rName').innerHTML = '<strong>' + name  + '</strong>';
+    document.getElementById('rEmail').innerHTML = '<strong>Email: </strong>' + email;
+    document.getElementById('rComment').textContent = comment;
+    document.getElementById('rPhone').innerHTML = '<strong>Phone: </strong>' + phone;
+    document.getElementById('rDate').innerHTML = '<strong>Date: </strong>' + date;
+    $('#viewCommentModal').modal('show');
 }
 
 function deleteComment(id) {

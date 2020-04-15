@@ -61,6 +61,8 @@ $(document).ready(function () {
         })
 
     })(jQuery)
+
+    $('#contactA').addClass('active');
 });
 
 function sendComment() {

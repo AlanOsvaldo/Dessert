@@ -6,10 +6,10 @@ document.getElementById('header').innerHTML = `<div class="header-area ">
                 <div class="main-menu  d-none d-lg-block">
                     <nav>
                         <ul id="navigation">
-                            <li><a class="active" href="index.html">home</a></li>
-                            <li><a href="Menu.html">Menu</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a id="indexA" href="index.html">home</a></li>
+                            <li><a id="menuA" href="Menu.html">Menu</a></li>
+                            <li><a id="aboutA" href="about.html">About</a></li>
+                            <li><a id="contactA" href="contact.html">Contact</a></li>
                         </ul>
                     </nav>
                 </div>

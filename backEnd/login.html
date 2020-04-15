@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+
+<body>
+
+    <div class="container" onclick="onclick">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="center">
+            <div class="overlay" id="content">
+                <!-- LOGN IN FORM by Omar Dsoky -->
+                <div class="con">
+                    <!--     Start  header Content  -->
+                    <header class="head-form">
+                        <h2>Log In</h2>
+                        <!--     A welcome message or an explanation of the login form -->
+                    </header>
+                    <!--     End  header Content  -->
+                    <br>
+                    <div class="field-set">
+
+                        <!--   user name -->
+                        <span class="input-item">
+                            <span class="material-icons">
+                                account_circle
+                            </span>
+                        </span>
+                        <!--   user name Input-->
+                        <input class="form-input" id="email" type="email" placeholder="@UserName" required>
+
+                        <br>
+
+                        <!--   Password -->
+
+                        <span class="input-item">
+                            <span class="material-icons">
+                                vpn_key
+                            </span>
+                        </span>
+                        <!--   Password Input-->
+                        <input class="form-input" type="password" placeholder="Password" id="password" name="password"
+                            required>
+
+                        <!--      Show/hide password  -->
+                        <span>
+                            <span id="eye" class="material-icons" type="button">
+                                visibility
+                            </span>>
+                        </span>
+
+
+                        <br>
+                        <!--        buttons -->
+                    </div>
+
+                    <!--   other buttons -->
+                    <div class="other">
+                        <!--      Forgot Password button-->
+                        <button onclick="forgotPassword()" class="btn submits frgt-pass">Forgot Password</button>
+                        <!--     Sign Up button -->
+                        <button onclick="logIn()" class="btn submits sign-up">Log In
+                            <!--         Sign Up font icon -->
+                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                        </button>
+                        <!--      End Other the Division -->
+                    </div>
+
+                    <!--   End Conrainer  -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-auth.js"></script>
+    <!--  SweetAlert    -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="assets/js/login.js"></script>
+
+</body>
+
+</html>
