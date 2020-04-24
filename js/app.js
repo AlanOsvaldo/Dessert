@@ -1,3 +1,30 @@
+console.log(window.location.pathname);
+
+if (window.location.pathname != "/Menu.html") {
+    document.head.innerHTML = `   <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Vero's Dessert</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- <link rel="manifest" href="site.webmanifest"> -->
+        <link rel="shortcut icon" type="image/x-icon" href="img/icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <link rel="stylesheet" href="css/nice-select.css">
+        <link rel="stylesheet" href="css/flaticon.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/slicknav.css">
+        <link rel="stylesheet" href="css/style.css">
+        <!-- <link rel="stylesheet" href="css/responsive.css"> -->`;
+}
+
 document.getElementById('header').innerHTML = `<div class="header-area ">
 <div id="sticky-header" class="main-header-area">
     <div class="container-fluid p-0">
@@ -17,7 +44,7 @@ document.getElementById('header').innerHTML = `<div class="header-area ">
             <div class="col-xl-2 col-lg-2">
                 <div class="logo-img">
                     <a href="index.html">
-                        <img src="img/logo.png" alt="">
+                        <img src="img/icon.png" alt="" width="100%" height="100" style="box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.75); border-radius: 10px;">
                     </a>
                 </div>
             </div>
@@ -133,10 +160,10 @@ var firebaseConfig = {
     messagingSenderId: "364085455444",
     appId: "1:364085455444:web:5cf4797debb28e1f699bc1",
     measurementId: "G-WWT7FMWXFJ"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  //firebase.analytics();
-  
-  var db = firebase.firestore();
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+//firebase.analytics();
+
+var db = firebase.firestore();
   //var storage = firebase.storage();
